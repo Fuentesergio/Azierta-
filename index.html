@@ -1,36 +1,35 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>YouTube Audio Player</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<div class="player">
+  <h2>🎧 YouTube Audio Player</h2>
 
-  <div class="player">
-    <h2>🎧 YouTube Audio Player</h2>
+  <input
+    id="urlInput"
+    type="text"
+    placeholder="Pega la URL de YouTube"
+  />
 
-    <input
-      id="urlInput"
-      type="text"
-      placeholder="Pega aquí la URL de YouTube"
-    />
-
-    <div class="controls">
-      <button onclick="loadVideo()">Cargar</button>
-      <button onclick="play()">▶</button>
-      <button onclick="pause()">⏸</button>
-      <button onclick="stop()">⏹</button>
-      <button onclick="volDown()">🔉</button>
-      <button onclick="volUp()">🔊</button>
-    </div>
+  <div class="controls">
+    <button class="warning" onclick="seek(-10)">⏪</button>
+    <button onclick="play()">▶</button>
+    <button onclick="pause()">⏸</button>
+    <button onclick="stop()">⏹</button>
+    <button class="warning" onclick="seek(10)">⏩</button>
   </div>
 
-  <!-- Player oculto -->
-  <div id="player"></div>
+  <div class="volume">
+    🔈
+    <input
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      oninput="setVolume(this.value)"
+    />
+    🔊
+  </div>
 
-  <!-- YouTube API -->
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+  <button class="secondary" style="margin-top:15px" onclick="loadVideo()">
+    Cargar vídeo
+  </button>
+</div>
+
+<div id="player"></div>
