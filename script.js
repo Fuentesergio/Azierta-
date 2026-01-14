@@ -42,12 +42,12 @@ function stop() {
   player.stopVideo();
 }
 
-function volUp() {
-  volume = Math.min(100, volume + 10);
-  player.setVolume(volume);
+function seek(seconds) {
+  const current = player.getCurrentTime();
+  player.seekTo(current + seconds, true);
 }
 
-function volDown() {
-  volume = Math.max(0, volume - 10);
+function setVolume(value) {
+  volume = value;
   player.setVolume(volume);
 }
